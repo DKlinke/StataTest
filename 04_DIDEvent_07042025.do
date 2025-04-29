@@ -1895,3 +1895,112 @@ drop first_year_hebesatz last_year_hebesatz
 * Oder verifiziere, dass der Wert innerhalb jeder ID konstant ist:
 * bysort id: tabulate schwelle_380_ueberschritten
 * bysort id: summarize schwelle_380_ueberschritten
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+UPDATE INFO
+
+
+--------------------
+Wann erfahren Unternehmen typischerweise von der Steuererhöhung das erste Mal? Ergibt es Sinn bereits im Juni wenn veröffentlicht werden sollte etwas anzupassen ? Wenn ja was?
+
+
+
+ACHTUNG WICHTIGE ANPASSUNG:
+Kapgesellschaft hat immer effekte und ne auswirkung.
+
+Personengesellschaften. Wenn Hebesatz unter 380  Bekommen bei Einkommenssteuer nachlass zu gezahlter Gewerbesteuer.
+Paragraph 35 Estg.
+
+Zu den negativen e_personalausgaben:
+EÜR betrachtet Geldflüsse
+e_personalausg
+EÜR bilden Geldströme ab also ergibt Rückstellung nicht viel Sinn, sonst Rückestattung von Versicherungsbeiträgen, Sozialversicherungsbeiträge.
+
+
+HETEROGENITÄT :
+Heterogenität gut vs nicht gut aufgestellte Unternehmen:
+Gut auf gestellte vs nivht so gut aufgestlellt untenrhemn. Investitionen kann in beide richtungen gehen. Iwie identifizieren:
+Summe betriebseinnahmen und betriebsausgaben anschauen! Verhältnis, wie veärndert sich marge?
+
+Weitere Variable: Entgelte für Schulden anschauen, betrachte Zinssatz!
+
+Bilanzposten sind leider nicht enthalten, deshalb kann man auch nicht so genaue Angaben machen!
+
+Heterogenität Investitionsabzug
+Kontroll: Investitionsabzugsbetrag (Als Kontrollvariable), wenn kleines unternehmen und große Investition tätigen, dann begünstigt abschreiben. Bei kleinen Unternehmen gewinn verändert oder Verlust!
+
+
+Heterogenität Mobil und Immobil:
+Mobil und immobile: -> leaf out kann man nicht wirklich etwas dazu sagen.
+
+
+
+Welche Unternehmen sollten in Analyse mitaufgenommen werden?
+GbR hängt vom Unternehmenszwekc ab, wenn man es als Privatperson betreibt, bspw immobilensektor, dann keine Gewerbesteuer g_fef303 
+
+Rechtsform
+11-19 zahlt nicht
+29 zahlt auch nicht
+
+Körperschaften
+
+Ab 29 raus 
+Ab 30 Kapitalgesellschaften.
+
+Ersmal nur 20,21,22,27  und 28 noch rein.
+
+
+Bei mischformem ist persgesell aktive gesellschaft. Haften tut kapitalgesllschaft, auf laufende iEinküfte wird einkommenssteur gezahlt. Kapgesellschaft kassiert haftungsvergütung. Diese kann hoch sein, 
+Via Höhe gewerbesteuer schauen welche man auch rausnimmt, könnte sein dass sie keine Gewerbesteuer zahlt. ABER es wird erst Gewerbesteuer gezahlt und dann die Vergütung. Dann lasse ich das raus. -> Mischformen erstmal pauschal rauslassen!
+
+Kontorllvariablen:
+
+Größenklasse
+
+Wirtschaftszweig
+
+Wirtschaftliche gut vs schletlaufend. 
+
+Steuerberaterkosten: Effekte wenn ich niedrige oder hohe Steuerberaterkosten habe. werde ich gut oder schlecht beraten? Könnte es sein. Wenn niedriger betrag dann evtl nur ein buchhalter und keinen steuerberater…
+
+
+Im Vergleich die Kapitalgesellschaften mit reinnehmen.-> Wie als Vergleichsgruppe nutzbar?
+
+Laufende Abschreibung auf bewegliche und unbewegliche -> evtl dafür kontrollieren.
+
+
+
+
+Abhängige Variablen was ergibt Sinn?
+
+gen sigln_g_reing = sign(g_reing)* ln(abs(g_reing)+1) // ohne _trun wie beim rest für einheitlichkeit
+
+
+gen ln_inv = ln(e_c25187)  // Investitionsabzugsbeträge -> sollten wohl sinken
+gen ln_son = ln(e_c25134)  // Sonderabschreibungen 7g -> gibt es vermutlich nicht im entsprechenden Zeitraum , fraglich ob sinnvoll
+gen ln_afa_bwg = ln(e_c25130)  // Afa bewegliche WG -> vermutlich verzögerter Effekt
+gen ln_afa_ubwg = ln(e_c25136)  // Afa unbewegliche WG -> ebenso verzögerter Effekt
+gen ln_erhauf= ln(e_c25225) // Erhaltungsaufwendungen , nur pos Werte -> sofort in voller Höhe, direkter Effekt
+
+gen ln_steube = ln(e_c25194) // Steuerberatung, nur pos Werte -> pos Effekt, da Steuerumschichtung ?
+gen sigln_p_einge = sign(p_ef34)* ln(abs(p_ef34)+1)  // Einkünfte aus Gewerbebetrieb, verläuft proportional, sollte sich decken
+
+
+
+
+
+*/
