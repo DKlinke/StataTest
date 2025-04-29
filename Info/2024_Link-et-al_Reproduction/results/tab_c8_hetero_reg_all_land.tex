@@ -1,0 +1,27 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{8}{c}}
+\toprule
+                    &\multicolumn{4}{c}{Downward Revision}                                                  &\multicolumn{4}{c}{Log Revision Ratio}                                                 \\\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         &\multicolumn{1}{c}{(6)}         &\multicolumn{1}{c}{(7)}         &\multicolumn{1}{c}{(8)}         \\
+\midrule
+Indicator for Rural Area=0 $\times$ Tax Hike Indicator&       0.027\sym{**} &       0.030\sym{**} &                     &                     &      -0.020         &      -0.028         &                     &                     \\
+                    &     (0.012)         &     (0.013)         &                     &                     &     (0.018)         &     (0.019)         &                     &                     \\
+Indicator for Rural Area=1 $\times$ Tax Hike Indicator&       0.037         &       0.043\sym{*}  &                     &                     &      -0.069\sym{**} &      -0.070\sym{*}  &                     &                     \\
+                    &     (0.023)         &     (0.025)         &                     &                     &     (0.034)         &     (0.037)         &                     &                     \\
+Indicator for Rural Area=0 $\times$ Tax Hike in PP&                     &                     &       0.019\sym{*}  &       0.022\sym{*}  &                     &                     &      -0.023         &      -0.027         \\
+                    &                     &                     &     (0.011)         &     (0.012)         &                     &                     &     (0.016)         &     (0.019)         \\
+Indicator for Rural Area=1 $\times$ Tax Hike in PP&                     &                     &       0.029\sym{*}  &       0.032\sym{*}  &                     &                     &      -0.072\sym{***}&      -0.072\sym{**} \\
+                    &                     &                     &     (0.017)         &     (0.019)         &                     &                     &     (0.026)         &     (0.028)         \\
+Constant            &       0.536\sym{***}&       0.535\sym{***}&       0.536\sym{***}&       0.536\sym{***}&      -0.033\sym{***}&      -0.032\sym{***}&      -0.033\sym{***}&      -0.032\sym{***}\\
+                    &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         \\
+\midrule
+Observations        &       35310         &       35310         &       35310         &       35310         &       34421         &       34421         &       34421         &       34421         \\
+Year FE             &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         \\
+Firm FE             &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         \\
+Year X State FE     &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         \\
+Year X Industry FE  &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         \\
+P-Value Test        &.6880000000000001         &        .641         &         .64         &        .649         &        .199         &        .314         &        .106         &        .184         \\
+\bottomrule
+\end{tabular}
+}

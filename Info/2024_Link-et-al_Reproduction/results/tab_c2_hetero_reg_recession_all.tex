@@ -1,0 +1,26 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{8}{c}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         &\multicolumn{1}{c}{(6)}         &\multicolumn{1}{c}{(7)}         &\multicolumn{1}{c}{(8)}         \\
+\midrule
+Indicator for Recession=0 $\times$ Tax Hike Indicator&       0.018         &       0.021\sym{*}  &                     &                     &      -0.011         &      -0.019         &                     &                     \\
+                    &     (0.012)         &     (0.013)         &                     &                     &     (0.018)         &     (0.020)         &                     &                     \\
+Indicator for Recession=1 $\times$ Tax Hike Indicator&       0.062\sym{***}&       0.069\sym{***}&                     &                     &      -0.084\sym{**} &      -0.086\sym{**} &                     &                     \\
+                    &     (0.022)         &     (0.024)         &                     &                     &     (0.034)         &     (0.036)         &                     &                     \\
+Indicator for Recession=0 $\times$ Tax Hike in PP&                     &                     &       0.013         &       0.015         &                     &                     &      -0.019         &      -0.024         \\
+                    &                     &                     &     (0.011)         &     (0.012)         &                     &                     &     (0.016)         &     (0.019)         \\
+Indicator for Recession=1 $\times$ Tax Hike in PP&                     &                     &       0.037\sym{**} &       0.043\sym{**} &                     &                     &      -0.064\sym{**} &      -0.063\sym{**} \\
+                    &                     &                     &     (0.016)         &     (0.018)         &                     &                     &     (0.027)         &     (0.028)         \\
+Constant            &       0.536\sym{***}&       0.535\sym{***}&       0.536\sym{***}&       0.536\sym{***}&      -0.033\sym{***}&      -0.032\sym{***}&      -0.033\sym{***}&      -0.032\sym{***}\\
+                    &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         \\
+\midrule
+Observations        &       35310         &       35310         &       35310         &       35310         &       34421         &       34421         &       34421         &       34421         \\
+Year FE             &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         \\
+Firm FE             &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         \\
+Year X State FE     &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         \\
+Year X Industry FE  &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         \\
+P-Value Test        &        .069         &        .074         &        .201         &        .195         &        .059         &        .105         &         .16         &        .266         \\
+\bottomrule
+\end{tabular}
+}

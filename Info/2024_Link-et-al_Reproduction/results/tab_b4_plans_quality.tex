@@ -1,0 +1,23 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         \\
+                    &      b/se/r         &      b/se/r         &      b/se/r         &      b/se/r         \\
+\midrule
+Log(Planned Investment)&       0.908\sym{***}&       0.552\sym{***}&       0.574\sym{***}&       0.462\sym{***}\\
+                    &     (0.005)         &     (0.011)         &     (0.012)         &     (0.012)         \\
+                    &                     &                     &                     &                     \\
+L.Log(Realized Investment)&                     &       0.395\sym{***}&                     &       0.195\sym{***}\\
+                    &                     &     (0.011)         &                     &     (0.011)         \\
+                    &                     &                     &                     &                     \\
+Constant            &       1.276\sym{***}&       0.731\sym{***}&       6.064\sym{***}&       4.886\sym{***}\\
+                    &     (0.067)         &     (0.047)         &     (0.165)         &     (0.164)         \\
+                    &                     &                     &                     &                     \\
+\midrule
+Observations        &       25282         &       25282         &       25282         &       25282         \\
+R^2                 &       0.844         &       0.866         &       0.888         &       0.892         \\
+R^2 (within)        &           -         &           -         &        0.27         &        0.30         \\
+\bottomrule
+\end{tabular}
+}

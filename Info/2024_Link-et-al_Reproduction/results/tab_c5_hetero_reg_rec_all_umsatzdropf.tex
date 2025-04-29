@@ -1,0 +1,37 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{8}{c}}
+\toprule
+                    &\multicolumn{4}{c}{Downward Revision}                                                  &\multicolumn{4}{c}{Log Inv. Revision}                                                  \\\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         &\multicolumn{1}{c}{(6)}         &\multicolumn{1}{c}{(7)}         &\multicolumn{1}{c}{(8)}         \\
+\midrule
+Indicator for Recession=0 $\times$ Indicator for Large Decrease in Revenues in the Current Year=0 $\times$ Tax Hike Indicator&       0.018         &       0.024\sym{*}  &                     &                     &      -0.013         &      -0.022         &                     &                     \\
+                    &     (0.013)         &     (0.013)         &                     &                     &     (0.019)         &     (0.021)         &                     &                     \\
+Indicator for Recession=0 $\times$ Indicator for Large Decrease in Revenues in the Current Year=1 $\times$ Tax Hike Indicator&       0.009         &      -0.002         &                     &                     &       0.010         &       0.009         &                     &                     \\
+                    &     (0.034)         &     (0.034)         &                     &                     &     (0.053)         &     (0.054)         &                     &                     \\
+Indicator for Recession=1 $\times$ Indicator for Large Decrease in Revenues in the Current Year=0 $\times$ Tax Hike Indicator&       0.072\sym{***}&       0.080\sym{***}&                     &                     &      -0.085\sym{**} &      -0.088\sym{**} &                     &                     \\
+                    &     (0.026)         &     (0.029)         &                     &                     &     (0.040)         &     (0.042)         &                     &                     \\
+Indicator for Recession=1 $\times$ Indicator for Large Decrease in Revenues in the Current Year=1 $\times$ Tax Hike Indicator&       0.032         &       0.037         &                     &                     &      -0.067         &      -0.066         &                     &                     \\
+                    &     (0.037)         &     (0.038)         &                     &                     &     (0.064)         &     (0.068)         &                     &                     \\
+Indicator for Large Decrease in Revenues in the Current Year&       0.105\sym{***}&       0.094\sym{***}&       0.105\sym{***}&       0.094\sym{***}&      -0.190\sym{***}&      -0.172\sym{***}&      -0.191\sym{***}&      -0.173\sym{***}\\
+                    &     (0.008)         &     (0.009)         &     (0.008)         &     (0.008)         &     (0.014)         &     (0.014)         &     (0.014)         &     (0.014)         \\
+Indicator for Recession=0 $\times$ Indicator for Large Decrease in Revenues in the Current Year=0 $\times$ Tax Hike in PP&                     &                     &       0.014         &       0.017         &                     &                     &      -0.021         &      -0.027         \\
+                    &                     &                     &     (0.011)         &     (0.013)         &                     &                     &     (0.017)         &     (0.020)         \\
+Indicator for Recession=0 $\times$ Indicator for Large Decrease in Revenues in the Current Year=1 $\times$ Tax Hike in PP&                     &                     &       0.007         &      -0.006         &                     &                     &      -0.004         &       0.002         \\
+                    &                     &                     &     (0.030)         &     (0.031)         &                     &                     &     (0.046)         &     (0.048)         \\
+Indicator for Recession=1 $\times$ Indicator for Large Decrease in Revenues in the Current Year=0 $\times$ Tax Hike in PP&                     &                     &       0.047\sym{**} &       0.054\sym{**} &                     &                     &      -0.077\sym{**} &      -0.077\sym{**} \\
+                    &                     &                     &     (0.019)         &     (0.022)         &                     &                     &     (0.031)         &     (0.034)         \\
+Indicator for Recession=1 $\times$ Indicator for Large Decrease in Revenues in the Current Year=1 $\times$ Tax Hike in PP&                     &                     &       0.004         &       0.008         &                     &                     &      -0.019         &      -0.017         \\
+                    &                     &                     &     (0.031)         &     (0.033)         &                     &                     &     (0.052)         &     (0.056)         \\
+Constant            &       0.518\sym{***}&       0.520\sym{***}&       0.519\sym{***}&       0.520\sym{***}&      -0.002         &      -0.004\sym{*}  &      -0.002         &      -0.004\sym{*}  \\
+                    &     (0.002)         &     (0.002)         &     (0.002)         &     (0.002)         &     (0.003)         &     (0.003)         &     (0.002)         &     (0.002)         \\
+\midrule
+Observations        &       35138         &       35138         &       35138         &       35138         &       34257         &       34257         &       34257         &       34257         \\
+Year FE             &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         \\
+Firm FE             &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         \\
+Year X State FE     &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         \\
+Year X Industry FE  &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         \\
+P-Value Test        &        .379         &        .354         &        .243         &        .256         &.8170000000000001         &        .787         &        .347         &        .376         \\
+\bottomrule
+\end{tabular}
+}

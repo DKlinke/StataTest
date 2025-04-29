@@ -1,0 +1,19 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{5}{c}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         \\
+\midrule
+Tax Hike Indicator  &       0.026\sym{**} &       0.031\sym{**} &       0.033\sym{**} &       0.039\sym{***}&       0.049\sym{***}\\
+                    &     (0.013)         &     (0.013)         &     (0.014)         &     (0.014)         &     (0.014)         \\
+Constant            &       0.540\sym{***}&       0.539\sym{***}&       0.539\sym{***}&       0.539\sym{***}&       0.538\sym{***}\\
+                    &     (0.005)         &     (0.005)         &     (0.001)         &     (0.001)         &     (0.001)         \\
+\midrule
+Observations        &       25960         &       25960         &       25911         &       25911         &       25911         \\
+Year FE             &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         \\
+Firm FE             &           -         &           -         &$\checkmark$         &$\checkmark$         &$\checkmark$         \\
+Year X State FE     &           -         &           -         &           -         &           -         &$\checkmark$         \\
+Year X Industry FE  &           -         &           -         &           -         &           -         &$\checkmark$         \\
+\bottomrule
+\end{tabular}
+}

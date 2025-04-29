@@ -1,0 +1,27 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{8}{c}}
+\toprule
+                    &\multicolumn{4}{c}{Downward Revision}                                                  &\multicolumn{4}{c}{Log Revision Ratio}                                                 \\\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         &\multicolumn{1}{c}{(6)}         &\multicolumn{1}{c}{(7)}         &\multicolumn{1}{c}{(8)}         \\
+\midrule
+Log Employees (Last Year)=0 $\times$ Tax Hike Indicator&       0.029\sym{*}  &       0.034\sym{**} &                     &                     &      -0.012         &      -0.020         &                     &                     \\
+                    &     (0.015)         &     (0.015)         &                     &                     &     (0.021)         &     (0.022)         &                     &                     \\
+Log Employees (Last Year)=1 $\times$ Tax Hike Indicator&       0.029\sym{*}  &       0.032\sym{**} &                     &                     &      -0.045\sym{*}  &      -0.050\sym{**} &                     &                     \\
+                    &     (0.015)         &     (0.016)         &                     &                     &     (0.023)         &     (0.024)         &                     &                     \\
+Log Employees (Last Year)=0 $\times$ Tax Hike in PP&                     &                     &       0.022         &       0.024\sym{*}  &                     &                     &      -0.016         &      -0.019         \\
+                    &                     &                     &     (0.013)         &     (0.014)         &                     &                     &     (0.018)         &     (0.020)         \\
+Log Employees (Last Year)=1 $\times$ Tax Hike in PP&                     &                     &       0.022\sym{*}  &       0.025\sym{*}  &                     &                     &      -0.052\sym{**} &      -0.054\sym{**} \\
+                    &                     &                     &     (0.013)         &     (0.014)         &                     &                     &     (0.020)         &     (0.023)         \\
+Constant            &       0.536\sym{***}&       0.535\sym{***}&       0.536\sym{***}&       0.536\sym{***}&      -0.033\sym{***}&      -0.033\sym{***}&      -0.033\sym{***}&      -0.033\sym{***}\\
+                    &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         \\
+\midrule
+Observations        &       35155         &       35151         &       35155         &       35151         &       34281         &       34277         &       34281         &       34277         \\
+Year FE             &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         \\
+Firm FE             &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         \\
+Year X State FE     &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         \\
+Year X Industry FE  &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         \\
+P-Value Test        &        .993         &        .912         &        .987         &        .967         &        .275         &        .331         &         .18         &        .227         \\
+\bottomrule
+\end{tabular}
+}

@@ -1,0 +1,30 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Difference-in-Differences: Investment Revisions after a Tax Hike}
+\begin{tabular}{l*{5}{c}}
+\toprule
+            &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         \\
+            &        b/se         &        b/se         &        b/se         &        b/se         &        b/se         \\
+\midrule
+0.rec#0.umsatzdropf#c.taxhike&       0.024\sym{**} &       0.018         &       0.024\sym{*}  &       0.027         &       0.034\sym{*}  \\
+            &     (0.012)         &     (0.013)         &     (0.013)         &     (0.017)         &     (0.018)         \\
+0.rec#1.umsatzdropf#c.taxhike&       0.001         &       0.009         &      -0.002         &      -0.035         &      -0.009         \\
+            &     (0.033)         &     (0.034)         &     (0.034)         &     (0.057)         &     (0.061)         \\
+1.rec#0.umsatzdropf#c.taxhike&       0.058\sym{**} &       0.072\sym{***}&       0.080\sym{***}&       0.078\sym{**} &       0.078\sym{**} \\
+            &     (0.026)         &     (0.026)         &     (0.029)         &     (0.035)         &     (0.039)         \\
+1.rec#1.umsatzdropf#c.taxhike&       0.011         &       0.032         &       0.037         &      -0.036         &      -0.020         \\
+            &     (0.034)         &     (0.037)         &     (0.038)         &     (0.073)         &     (0.076)         \\
+umsatzdropf &       0.122\sym{***}&       0.105\sym{***}&       0.094\sym{***}&       0.087\sym{***}&       0.072\sym{***}\\
+            &     (0.008)         &     (0.008)         &     (0.009)         &     (0.013)         &     (0.014)         \\
+Constant    &       0.515\sym{***}&       0.518\sym{***}&       0.520\sym{***}&       0.497\sym{***}&       0.498\sym{***}\\
+            &     (0.005)         &     (0.002)         &     (0.002)         &     (0.002)         &     (0.002)         \\
+\midrule
+\(N\)       &       35139         &       35138         &       35138         &       21255         &       21193         \\
+Year FE     &$\checkmark$         &$\checkmark$         &           -         &$\checkmark$         &           -         \\
+Firm FE     &           -         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         \\
+Year X State FE&           -         &           -         &$\checkmark$         &           -         &$\checkmark$         \\
+Year X Industry FE&           -         &           -         &$\checkmark$         &           -         &$\checkmark$         \\
+Exclude Labor Drop&           -         &           -         &           -         &   Yes, < 5%         &   Yes, < 5%         \\
+\bottomrule
+\end{tabular}
+\end{table}

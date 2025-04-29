@@ -1,0 +1,19 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{5}{c}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         \\
+\midrule
+log\_net             &       2.585\sym{*}  &       4.321\sym{***}&       3.890\sym{***}&       5.161\sym{***}&       6.125\sym{***}\\
+                    &     (1.446)         &     (1.367)         &     (1.500)         &     (1.475)         &     (1.775)         \\
+Constant            &      -0.039\sym{***}&      -0.038\sym{***}&      -0.038\sym{***}&      -0.037\sym{***}&      -0.037\sym{***}\\
+                    &     (0.007)         &     (0.007)         &     (0.001)         &     (0.001)         &     (0.001)         \\
+\midrule
+Observations        &       25310         &       25310         &       25255         &       25255         &       25255         \\
+Year FE             &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         \\
+Firm FE             &           -         &           -         &$\checkmark$         &$\checkmark$         &$\checkmark$         \\
+Year X State FE     &           -         &           -         &           -         &           -         &$\checkmark$         \\
+Year X Industry FE  &           -         &           -         &           -         &           -         &$\checkmark$         \\
+\bottomrule
+\end{tabular}
+}

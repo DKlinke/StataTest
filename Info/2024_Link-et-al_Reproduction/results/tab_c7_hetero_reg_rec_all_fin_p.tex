@@ -1,0 +1,37 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{8}{c}}
+\toprule
+                    &\multicolumn{4}{c}{Downward Revision}                                                  &\multicolumn{4}{c}{Log Inv. Revision}                                                  \\\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         &\multicolumn{1}{c}{(6)}         &\multicolumn{1}{c}{(7)}         &\multicolumn{1}{c}{(8)}         \\
+\midrule
+Indicator for Recession=0 $\times$ Financial Conditions Strongly Hampered Investment (Current Year)=0 $\times$ Tax Hike Indicator&       0.025\sym{*}  &       0.024         &                     &                     &      -0.009         &      -0.011         &                     &                     \\
+                    &     (0.015)         &     (0.016)         &                     &                     &     (0.022)         &     (0.024)         &                     &                     \\
+Indicator for Recession=0 $\times$ Financial Conditions Strongly Hampered Investment (Current Year)=1 $\times$ Tax Hike Indicator&      -0.004         &      -0.017         &                     &                     &      -0.051         &      -0.045         &                     &                     \\
+                    &     (0.055)         &     (0.057)         &                     &                     &     (0.116)         &     (0.121)         &                     &                     \\
+Indicator for Recession=1 $\times$ Financial Conditions Strongly Hampered Investment (Current Year)=0 $\times$ Tax Hike Indicator&       0.024         &       0.039         &                     &                     &      -0.040         &      -0.061         &                     &                     \\
+                    &     (0.029)         &     (0.030)         &                     &                     &     (0.044)         &     (0.047)         &                     &                     \\
+Indicator for Recession=1 $\times$ Financial Conditions Strongly Hampered Investment (Current Year)=1 $\times$ Tax Hike Indicator&       0.126\sym{*}  &       0.153\sym{**} &                     &                     &      -0.066         &      -0.095         &                     &                     \\
+                    &     (0.065)         &     (0.070)         &                     &                     &     (0.125)         &     (0.127)         &                     &                     \\
+Financial Conditions Strongly Hampered Investment (Current Year)&       0.113\sym{***}&       0.111\sym{***}&       0.115\sym{***}&       0.113\sym{***}&      -0.225\sym{***}&      -0.214\sym{***}&      -0.226\sym{***}&      -0.214\sym{***}\\
+                    &     (0.017)         &     (0.017)         &     (0.017)         &     (0.017)         &     (0.031)         &     (0.032)         &     (0.031)         &     (0.031)         \\
+Indicator for Recession=0 $\times$ Financial Conditions Strongly Hampered Investment (Current Year)=0 $\times$ Tax Hike in PP&                     &                     &       0.026\sym{*}  &       0.021         &                     &                     &      -0.023         &      -0.018         \\
+                    &                     &                     &     (0.014)         &     (0.016)         &                     &                     &     (0.023)         &     (0.025)         \\
+Indicator for Recession=0 $\times$ Financial Conditions Strongly Hampered Investment (Current Year)=1 $\times$ Tax Hike in PP&                     &                     &      -0.025         &      -0.039         &                     &                     &      -0.048         &      -0.045         \\
+                    &                     &                     &     (0.050)         &     (0.053)         &                     &                     &     (0.101)         &     (0.108)         \\
+Indicator for Recession=1 $\times$ Financial Conditions Strongly Hampered Investment (Current Year)=0 $\times$ Tax Hike in PP&                     &                     &       0.013         &       0.024         &                     &                     &      -0.019         &      -0.030         \\
+                    &                     &                     &     (0.023)         &     (0.025)         &                     &                     &     (0.036)         &     (0.040)         \\
+Indicator for Recession=1 $\times$ Financial Conditions Strongly Hampered Investment (Current Year)=1 $\times$ Tax Hike in PP&                     &                     &       0.066         &       0.089         &                     &                     &      -0.056         &      -0.066         \\
+                    &                     &                     &     (0.064)         &     (0.077)         &                     &                     &     (0.107)         &     (0.116)         \\
+Constant            &       0.550\sym{***}&       0.550\sym{***}&       0.551\sym{***}&       0.551\sym{***}&      -0.054\sym{***}&      -0.054\sym{***}&      -0.054\sym{***}&      -0.054\sym{***}\\
+                    &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         &     (0.002)         &     (0.002)         &     (0.002)         &     (0.002)         \\
+\midrule
+Observations        &       23661         &       23640         &       23661         &       23640         &       23123         &       23101         &       23123         &       23101         \\
+Year FE             &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         \\
+Firm FE             &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         \\
+Year X State FE     &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         \\
+Year X Industry FE  &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         \\
+P-Value Test        &        .168         &        .138         &        .449         &        .426         &        .849         &        .802         &        .746         &        .767         \\
+\bottomrule
+\end{tabular}
+}

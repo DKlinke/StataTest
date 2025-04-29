@@ -1,0 +1,25 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         \\
+\midrule
+Effective Tax Hike  &      -0.120\sym{**} &                     &                     &                     \\
+                    &     (0.054)         &                     &                     &                     \\
+tax\_firm\_com\_eff\_change7\_c&                     &      -0.107\sym{**} &                     &                     \\
+                    &                     &     (0.050)         &                     &                     \\
+Effective Tax Hike  &                     &                     &      -0.121\sym{**} &                     \\
+                    &                     &                     &     (0.061)         &                     \\
+tax\_firm\_com\_eff\_change11\_c&                     &                     &                     &      -0.111\sym{*}  \\
+                    &                     &                     &                     &     (0.057)         \\
+Constant            &      -0.033\sym{***}&      -0.033\sym{***}&      -0.033\sym{***}&      -0.033\sym{***}\\
+                    &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         \\
+\midrule
+Observations        &       34421         &       34421         &       34421         &       34421         \\
+Year FE             &           -         &           -         &           -         &           -         \\
+Firm FE             &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         \\
+Year X State FE     &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         \\
+Year X Industry FE  &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         \\
+\bottomrule
+\end{tabular}
+}

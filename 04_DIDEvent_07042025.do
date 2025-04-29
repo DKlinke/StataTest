@@ -1792,3 +1792,106 @@ Dieser Code sollte dir die gewünschte Event-Study-Analyse und die dazugehörige
 
 
 */
+
+
+
+
+
+
+
+
+
+
+
+
+*******************************
+*******************************
+
+id im letzten Jahr drüber?
+
+*******************************
+*******************************
+
+
+* Sicherstellen, dass die Daten als Panel definiert sind
+xtset id jahr
+
+* Schritt 1: Eine temporäre Variable erstellen, die NUR im letzten Jahr für jede ID 1 ist, wenn hebesatz > 380 ist, und 0 sonst. In allen anderen Jahren ist diese Variable missing (.).
+* Wir sortieren nach id und jahr, um sicherzustellen, dass _n und _N korrekt sind und die letzte Beobachtung identifiziert werden kann.
+bysort id (jahr): generate byte temp_hebesatz_check = (hebesatz > 380) if _n == _N
+
+* Erklärung zu Schritt 1:
+* `bysort id (jahr)`: Sortiert die Daten nach 'id' und innerhalb jeder ID nach 'jahr'.
+* `generate byte temp_hebesatz_check`: Erstellt eine neue Variable vom Typ byte (speichereffizient für 0/1 Werte).
+* `(hebesatz > 380)`: Die Bedingung, die wir prüfen wollen. Der Ausdruck liefert 1, wenn wahr, und 0, wenn falsch.
+* `if _n == _N`: Diese Bedingung stellt sicher, dass der vorhergehende Ausdruck NUR für die letzte Beobachtung ('_n' ist die aktuelle Beobachtungsnummer innerhalb der Gruppe, '_N' ist die Gesamtzahl der Beobachtungen in der Gruppe) jeder ID ausgewertet wird. Für alle anderen Beobachtungen (die nicht das letzte Jahr sind) wird `temp_hebesatz_check` missing (system missing value, .) sein.
+
+* Schritt 2: Die Information aus dem letzten Jahr auf alle Jahre für dieselbe ID übertragen.
+* Wir nutzen 'egen' mit der Funktion 'max()' über die ID hinweg. 'egen max()' ignoriert fehlende Werte standardmäßig. Da 'temp_hebesatz_check' nur im letzten Jahr einen Wert (0 oder 1) hat und sonst missing ist, wird 'max()' einfach diesen Wert aus dem letzten Jahr für die gesamte Gruppe (ID) zurückgeben.
+bysort id: egen byte hebesatüber380imletztenJahr = max(temp_hebesatz_check)
+
+* Erklärung zu Schritt 2:
+* `bysort id`: Sorgt dafür, dass 'egen' die Operation für jede ID separat durchführt.
+* `egen byte hebesatüber380imletztenJahr`: Erstellt die finale Variable. 'egen' wird verwendet, weil es Gruppensummen oder -statistiken berechnen und auf die gesamte Gruppe anwenden kann.
+* `max(temp_hebesatz_check)`: Berechnet den Maximalwert der temporären Variable innerhalb jeder ID. Da 'temp_hebesatz_check' nur im letzten Jahr einen Nicht-Missing-Wert hat, ist das Maximum entweder 0 oder 1, je nachdem, ob der Hebesatz im letzten Jahr <= 380 oder > 380 war. Dieser Maximalwert wird dann für alle Zeilen der jeweiligen ID zugewiesen.
+
+* Optional: Temporäre Variable löschen, da wir sie nicht mehr brauchen
+drop temp_hebesatz_check
+
+* Jetzt hat die Variable 'hebesatüber380imletztenJahr' für alle Beobachtungen derselben ID denselben Wert (1 oder 0), basierend auf dem Hebesatz im letzten beobachteten Jahr dieser ID.
+
+* Du kannst es überprüfen, z.B. für eine spezifische ID:
+* list id jahr hebesatz hebesatüber380imletztenJahr if id == deine_id_nummer
+
+* Oder schaue dir die Verteilung der neuen Variable an:
+* tabulate hebesatüber380imletztenJahr
+
+* Oder verifiziere, dass der Wert innerhalb jeder ID konstant ist:
+* bysort id: tabulate hebesatüber380imletztenJahr
+
+*-----------------------------------------------------------------------
+*SCHWELLE WIRD ÜBERSCHRITTEN CHECK
+* Sicherstellen, dass die Daten als Panel definiert sind
+xtset id jahr
+
+* Schritt 1: Hebesatz-Wert aus dem ersten Jahr für jede ID abrufen und auf alle Jahre der ID übertragen
+* Wir sortieren die Daten zuerst nach id und dann nach jahr aufsteigend.
+* Innerhalb jeder ID greifen wir dann mit hebesatz[1] auf den Wert im ersten Jahr zu.
+* Stata weist diesen Wert automatisch allen Beobachtungen (Jahren) innerhalb der aktuellen bysort-Gruppe (ID) zu.
+bysort id (jahr): generate double first_year_hebesatz = hebesatz[1]
+
+* Schritt 2: Hebesatz-Wert aus dem letzten Jahr für jede ID abrufen und auf alle Jahre der ID übertragen
+* Wieder sortieren wir nach id und jahr.
+* Innerhalb jeder ID greifen wir mit hebesatz[_N] auf den Wert im letzten Jahr zu (_N ist die Gesamtzahl der Beobachtungen in der aktuellen Gruppe/ID).
+* Stata weist diesen Wert ebenfalls allen Beobachtungen innerhalb der ID zu.
+bysort id (jahr): generate double last_year_hebesatz = hebesatz[_N]
+
+* Erklärung zu Schritt 1 & 2:
+* `bysort id (jahr)`: Sortiert die Daten nach 'id' und innerhalb jeder ID nach 'jahr'. Die Klammern um 'jahr' bedeuten, dass innerhalb jeder ID nach 'jahr' sortiert wird, was für die Identifizierung des ersten (`[1]`) und letzten (`[_N]`) Jahres entscheidend ist.
+* `generate double ...`: Erstellt die neuen Variablen. Wir verwenden `double`, um sicherzustellen, dass der Hebesatz-Wert korrekt gespeichert wird (obwohl es hier wahrscheinlich auch float tun würde). Stata füllt diese Variable für jede Zeile der aktuellen `bysort`-Gruppe (ID) mit dem entsprechenden Wert (erster oder letzter Hebesatz).
+
+* Schritt 3: Neue Variable erstellen, die prüft, ob Hebesatz im ersten Jahr < 380 UND im letzten Jahr > 380 war.
+* Da die Variablen `first_year_hebesatz` und `last_year_hebesatz` für alle Beobachtungen derselben ID denselben Wert haben, wird die Bedingung (`... < 380) & (... > 380)`) für alle Beobachtungen derselben ID entweder überall wahr (1) oder überall falsch (0) sein.
+generate byte schwelle_380_ueberschritten = (first_year_hebesatz < 380) & (last_year_hebesatz > 380)
+
+* Erklärung zu Schritt 3:
+* `generate byte ...`: Erstellt die finale Variable vom Typ byte (effizient für 0/1).
+* `(first_year_hebesatz < 380)`: Prüft die erste Bedingung.
+* `&`: Das logische UND. Beide Bedingungen müssen wahr sein.
+* `(last_year_hebesatz > 380)`: Prüft die zweite Bedingung.
+* Das Ergebnis dieser logischen Kombination (1 wenn beide wahr, 0 sonst) wird der neuen Variable zugewiesen. Da die Werte der beteiligten Variablen innerhalb der ID konstant sind, ist auch das Ergebnis der Prüfung innerhalb der ID konstant.
+
+* Optional: Temporäre Variablen löschen, da wir sie nicht mehr brauchen
+drop first_year_hebesatz last_year_hebesatz
+
+* Jetzt hat die Variable 'schwelle_380_ueberschritten' für alle Beobachtungen derselben ID den Wert 1, wenn die Schwelle von 380 im Zeitverlauf dieser ID überschritten wurde (d.h. im ersten Jahr darunter lag und im letzten Jahr darüber), und sonst den Wert 0 für alle Beobachtungen dieser ID.
+
+* Du kannst das Ergebnis überprüfen, z.B. durch Auflisten einiger Daten:
+* list id jahr hebesatz schwelle_380_ueberschritten in 1/30
+
+* Oder schaue dir die Verteilung der neuen Variable an:
+* tabulate schwelle_380_ueberschritten
+
+* Oder verifiziere, dass der Wert innerhalb jeder ID konstant ist:
+* bysort id: tabulate schwelle_380_ueberschritten
+* bysort id: summarize schwelle_380_ueberschritten

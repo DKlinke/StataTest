@@ -1,0 +1,27 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{8}{c}}
+\toprule
+                    &\multicolumn{4}{c}{Downward Revision}                                                  &\multicolumn{4}{c}{Log Inv. Revision}                                                  \\\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         &\multicolumn{1}{c}{(6)}         &\multicolumn{1}{c}{(7)}         &\multicolumn{1}{c}{(8)}         \\
+\midrule
+User Cost Change (Firm-Specific Inv. Shares)=0 $\times$ Tax Hike Indicator&       0.019         &       0.020\sym{*}  &                     &                     &      -0.021         &      -0.024         &                     &                     \\
+                    &     (0.011)         &     (0.012)         &                     &                     &     (0.017)         &     (0.018)         &                     &                     \\
+User Cost Change (Firm-Specific Inv. Shares)=1 $\times$ Tax Hike Indicator&       0.089\sym{***}&       0.112\sym{***}&                     &                     &      -0.079\sym{*}  &      -0.107\sym{**} &                     &                     \\
+                    &     (0.028)         &     (0.030)         &                     &                     &     (0.047)         &     (0.051)         &                     &                     \\
+User Cost Change (Firm-Specific Inv. Shares)=0 $\times$ Tax Hike in PP&                     &                     &       0.013         &       0.013         &                     &                     &      -0.024\sym{*}  &      -0.024         \\
+                    &                     &                     &     (0.010)         &     (0.011)         &                     &                     &     (0.015)         &     (0.017)         \\
+User Cost Change (Firm-Specific Inv. Shares)=1 $\times$ Tax Hike in PP&                     &                     &       0.066\sym{***}&       0.084\sym{***}&                     &                     &      -0.089\sym{**} &      -0.107\sym{**} \\
+                    &                     &                     &     (0.024)         &     (0.026)         &                     &                     &     (0.039)         &     (0.042)         \\
+Constant            &       0.536\sym{***}&       0.535\sym{***}&       0.536\sym{***}&       0.536\sym{***}&      -0.033\sym{***}&      -0.032\sym{***}&      -0.033\sym{***}&      -0.032\sym{***}\\
+                    &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         &     (0.001)         \\
+\midrule
+Observations        &       35310         &       35310         &       35310         &       35310         &       34421         &       34421         &       34421         &       34421         \\
+Year FE             &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         \\
+Firm FE             &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         &$\checkmark$         \\
+Year X State FE     &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         \\
+Year X Industry FE  &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         &$\checkmark$         \\
+P-Value Test        &        .017         &        .004         &        .038         &        .012         &        .243         &        .126         &         .12         &        .065         \\
+\bottomrule
+\end{tabular}
+}

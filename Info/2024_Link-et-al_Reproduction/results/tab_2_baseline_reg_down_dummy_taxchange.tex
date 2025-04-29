@@ -1,0 +1,19 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{5}{c}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         \\
+\midrule
+Tax Hike in PP      &       0.012         &       0.018\sym{*}  &       0.017\sym{*}  &       0.021\sym{**} &       0.024\sym{**} \\
+                    &     (0.009)         &     (0.009)         &     (0.010)         &     (0.009)         &     (0.010)         \\
+Constant            &       0.537\sym{***}&       0.536\sym{***}&       0.536\sym{***}&       0.536\sym{***}&       0.536\sym{***}\\
+                    &     (0.005)         &     (0.005)         &     (0.001)         &     (0.001)         &     (0.001)         \\
+\midrule
+Observations        &       35310         &       35310         &       35310         &       35310         &       35310         \\
+Year FE             &           -         &$\checkmark$         &           -         &$\checkmark$         &           -         \\
+Firm FE             &           -         &           -         &$\checkmark$         &$\checkmark$         &$\checkmark$         \\
+Year X State FE     &           -         &           -         &           -         &           -         &$\checkmark$         \\
+Year X Industry FE  &           -         &           -         &           -         &           -         &$\checkmark$         \\
+\bottomrule
+\end{tabular}
+}
