@@ -139,23 +139,62 @@ else if $FDZ == 2 {
 
 	drop if inlist(g_fef21, 1, 2, 3)
 
-// Filtern nach relevanter Rechtsform : Vorerst Fokus nur auf Personengesellschaften.
+// Rechtsform
+*checked via compare command
+	rename g_fef303 g_rechtsform 
+	rename v_ef16 v_rechtsform
+	rename e_ef14 e_rechtsform
+	gen rechtsform = g_rechtsform
+	replace rechtsform = v_rechtsform if rechtsform ==. 
+	replace rechtsform = e_rechtsform if rechtsform ==. 
+
+// Filtern nach relevanter Rechtsform : Nur Personengesellschaften. Mischformen 
 /*
+
+11- 19 zahlt normalerweise keine Gewerbesteuer?
+11 Hausgewerbetreibend
+12 Sonstige Einzelgewerbetreibend 12er mitreinnehmen die Gewerbesteuer zahlen!
+13 Land und Forstwirte
+14 Freie Berufe
+15 sonstige selbständig tätige Personen
+16 Person mit beteiligung an gewerbl Personenegesllschaft
+
+19 Sonstige nat Person
+
 20 = Atypische stille Gesellschaften 
 21 = Offene Handelsgesellschaften 
 22 = Kommanditgesellschaften 
-23 = Gesellschaften mit beschränkter Haftung & Co. KG 
-24 = Gesellschaften mit beschränkter Haftung & Co. OHG 
-25 = Aktiengesellschaften & Co. KG 
-26 = Aktiengesellschaften & Co. OHG 
+23 = Gesellschaften mit beschränkter Haftung & Co. KG MISCHFORM
+24 = Gesellschaften mit beschränkter Haftung & Co. OHG MISCHFORM
+25 = Aktiengesellschaften & Co. KG MISCHFORM
+26 = Aktiengesellschaften & Co. OHG MISCHFORM
 27 = Gesellschaften bürgerlichen Rechts 
-28 = Europäische wirtshcaftliche Interessensvereinigung
-*/
-		
-	gen kapges = 1 if inlist(g_fef303,31,32,33,34,35,36,37,39) 
-	gen persges = 1 if inlist(g_fef303, 20, 21, 22, 27, 28) // ggf. erweitern mit Kapitalgesellschaften oder anderen Rechtsformen!
-	keep if persges == 1
+28 = Europäische wirtschaftliche Interessenvereinigung
 
+29 zahlt auch keien gewerbesteuer (ähnliche Gesellschaft: Grundstücksgemeinschaft oder stille Gesellschaft)
+
+
+30  Kapiptalgesellschaften 
+31 AG
+32 KG
+33 Kolonialgesllschaft
+34 Bergrechtliche Gesellschaften
+35 GmbH
+36 Europäische Aktiengesellschaften
+37 Unternehmensgesellschaft (haftungsbeschränkt)
+39 SOnstige Kapitalgesellschaft
+Ab 40 Genossenschaften und Realgemeinden
+AB 50 Versicherungsvereine  sonstige juristische Personen
+Ab 60 Nicht rechtsfäige Vereine
+ab 70 Banken und Kreditanstalten sowie öfffentlich rechtliche Versorgungsbetriebe
+Ab 80 Körperschaften
+Ab 90: Ausländische Rechtsformen
+*/
+
+	gen persges = 1 if inlist(rechtsform, 20, 21, 22, 27, 28)
+	keep if persges == 1
+	
+	
 // AGS 
 	rename g_fef307 g_ags 
 	rename v_ef4 v_ags
@@ -166,14 +205,6 @@ else if $FDZ == 2 {
 	drop if missing(ags) // Beobachtungen mit fehlender ags löschen
 
 
-// Rechtsform
-*checked via compare command
-	rename g_fef303 g_rechtsform 
-	rename v_ef16 v_rechtsform
-	rename e_ef14 e_rechtsform
-	gen rechtsform = g_rechtsform
-	replace rechtsform = v_rechtsform if rechtsform ==. 
-	replace rechtsform = e_rechtsform if rechtsform ==. 
 
 // Größenklasse
 	rename g_fef17 g_gk 
@@ -182,7 +213,7 @@ else if $FDZ == 2 {
 	replace gk = e_gk if gk==.
 
 // Hebesatz
-	capture rename g_fef311 hebesatz 
+	rename g_fef311 hebesatz 
 	drop if hebesatz < 200 // Beobachtungen ohne sinnvollen hebesatz und fehlende Werte löschen
 	drop if missing(hebesatz)
 
@@ -204,17 +235,19 @@ else if $FDZ == 2 {
 	gen g_reings = g_reing / v_ums * 100 // Reingewinnsatz = Reingewinn/Umsatz *100
 	
 	
-// ags_string mit führenden nullen, bundesland und ost west variable erstellen
+// ags mit führenden nullen und bundesland
 	tostring ags, generate(ags_string) // String Formatierung um führende nullen einzufügen
 	replace ags_string = "0" + ags_string if strlen(ags_string) == 7 // führende 0en hinzufügen
 	generate bundesland = substr(ags_string, 1, 2)
 	destring bundesland, gen(bundesland_num)
 	
+	
+	gen county = substr(ags_string, 1, 5)
+	destring county, gen(county_num)
+	
 	gen west = .
 	replace west = 1 if inrange(bundesland_num, 1, 10)
 	replace west = 0 if inrange(bundesland_num, 11, 16)
-	
-	  
 	
 
 *******************************
@@ -272,23 +305,19 @@ else if $FDZ == 2 {
 *  DID EventStudy Variablen Vorbereitung   *
 ********************************************
 
-	 use "$neudatenpfad/Temp/preperation.dta", clear
-	 	
-// OPTION 1:  Behalte nur volle id Jahr Kombinationen (balanced panel)
+	* use "$neudatenpfad/Temp/preperation.dta", clear
 
-preserve 
-
-	* Behalte nur balanced panel	
-	by id: gen n_years =_N  // Gibt für jede id die Anzahl der Beobachtungen, also Anzahl der Jahre die sie auftaucht in n_years aus
-	tab n_years
-	keep if n_years == 7
-	save "$neudatenpfad/Temp/preperation_allyears.dta", replace
-					
-restore
 
 	
-	
-	
+// OPTION 1:  Behalte nur volle id Jahr Kombinationen
+
+	preserve 
+		by id: gen n_years =_N  // Gibt für jede id die Anzahl der Beobachtungen, also Anzahl der Jahre die sie auftaucht in n_years aus
+		tab n_years
+		keep if n_years == 7
+		save "$neudatenpfad/Temp/preperation_allyears.dta", replace
+	restore
+
 /*
 // OPTION 2: Erstelle pattern variablen wie  bei xtdescribe (sodass Datensatz nach Bedarf gefiltert werden kann) (für spätere Analysen)
 
@@ -315,7 +344,9 @@ restore
 		xtdescribe
 		save "$neudatenpfad/Temp/preperation_min5years.dta", replace
 	restore
+
 */
+
 
 
 
